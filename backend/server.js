@@ -55,4 +55,11 @@ app.post('/api/report', async (req, res) => {
 });
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`🚀 CivicPulse AI Backend running on port ${PORT}`));
+
+// Only start the listener if we are NOT on Vercel (locally)
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(PORT, () => console.log(`🚀 CivicPulse AI Backend running on ${PORT}`));
+}
+
+// Export the app for Vercel to use
+export default app;
