@@ -13,11 +13,12 @@ export default function App() {
 
     try {
       // Pointing to your local Node.js server
-      const response = await fetch('http://localhost:5000/api/report', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ reportText })
-      });
+      // Replace 'http://localhost:5000' with the environment variable
+const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/report`, {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ reportText })
+});;
 
       const data = await response.json();
       
